@@ -2,7 +2,7 @@ module ExerciciosCap01 where
 
 -- Capitulo 01 -> Programação Funcional
 -- Aqui vou colocar alguns exemplos simples sobre o que é o Haskell,
-e como usar o GHCI. O livro em si não possui exercicios no capítulo 1.
+-- e como usar o GHCI. O livro em si não possui exercicios no capítulo 1.
 
 -- Tudo o que vem a seguir pode ser testado no GHCI
 
@@ -23,3 +23,6 @@ let h = b^2
 
 -- Note que não existem variáveis, o que temos são funções que uma vez que
 -- adquirem um valor, não mudam.
+
+-- Exemplo de Olá Mundo no ghci
+"Olá " ++ "Mundo!"

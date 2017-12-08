@@ -1,61 +1,72 @@
---    3.1) Crie o tipo Pergunta com os values constructors Sim
---    ou Nao . Faça as funções seguintes, determinando seus tipos
---    explicitamente.
-    --    pergNum : recebe via parâmetro uma Pergunta .
-    --    Retorna 0 para Nao e 1 para Sim .
-    --    listPergs : recebe via parâmetro uma lista de
-    --    Perguntas , e retorna 0 s e 1 s correspondentes aos
-    --    constructores contidos na lista.
-    --    and' : recebe duas Perguntas como parâmetro e
-    --    retorna a tabela verdade do and lógico, usando
-    --    Sim como verdadeiro e Nao como falso.
+--    3.1) Crie o tipo Pergunta com os values constructors Sim ou Nao . Faça as funções seguintes, determinando seus tipos explicitamente.
+    --    pergNum : recebe via parâmetro uma Pergunta. Retorna 0 para Nao e 1 para Sim .
+    --    listPergs : recebe via parâmetro uma lista de Perguntas , e retorna 0 s e 1 s correspondentes aos constructores contidos na lista.
+    --    and' : recebe duas Perguntas como parâmetro e retorna a tabela verdade do and lógico, usando Sim como verdadeiro e Nao como falso.
     --    or' : idem ao anterior, porém deve ser usado o ou lógico.
     --    not' : idem aos anteriores, porém usando o not lógico.
+    
+data Pergunta = Sim | Nao
+        deriving Show
 
---    3.2) Faça o tipo Temperatura que pode ter valores Celsius ,
---    Farenheit ou Kelvin . Implemente as funções:
-    --    converterCelsius : recebe um valor double e uma
-    --    temperatura, e faz a conversão para Celsius.
-    --    converterKelvin : recebe um valor double e uma
-    --    temperatura, e faz a conversão para Kelvin.
-    --    converterFarenheit : recebe um valor double e
-    --    uma temperatura, e faz a conversão para Farenheit.
+listPergs :: [Pergunta] -> [Int]
+listPergs Sim = 1
+listPergs _= 0
 
---    3.3) Implemente uma função que simule o vencedor de uma
---    partida de pedra, papel e tesoura usando tipos criados. Casos de
+and' :: Pergunta -> Pergunta -> Bool
+and' Sim Sim = True
+and' _ _ = False
+
+or' :: Pergunta -> Pergunta -> Bool
+or' Sim _ = True
+or' _ Sim = True
+or' _ _ = False
+
+not' :: Pergunta -> Pergunta -> Bool
+not' Sim Sim = False
+not' _ _ = True
+
+--    3.2) Faça o tipo Temperatura que pode ter valores Celsius, Farenheit ou Kelvin . Implemente as funções:
+    --    converterCelsius : recebe um valor double e uma temperatura, e faz a conversão para Celsius.
+    --    converterKelvin : recebe um valor double e uma temperatura, e faz a conversão para Kelvin.
+    --    converterFarenheit : recebe um valor double e uma temperatura, e faz a conversão para Farenheit.
+
+data Temperatura = Celsius | Farenheit | Kelvin
+                deriving Show
+
+converterCelsius :: Temperatura -> temperatura
+converterCelsius Kelvin = x - 273
+converterCelsius Farenheit = (x - 32)/1.8
+
+converterFarenheit :: Temperatura -> temperatura
+converterFarenheit Kelvin = (x - 273)* 1.8 + 32
+converterFarenheit Celsius = 1.8 * x + 32
+
+converterKelvin :: Temperatura -> temperatura
+converterKelvin Celsius = x + 273
+converterKelvin Farenheit = (x - 32)/1.8 + 273
+
+
+--    3.3) Implemente uma função que simule o vencedor de uma partida de pedra, papel e tesoura usando tipos criados. Casos de
 --    empate devem ser considerados em seu tipo.
 
---    3.4) Faça uma função que retorne uma string, com todas as
---    vogais maiúsculas e minúsculas eliminadas de uma string passada
+
+--    3.4) Faça uma função que retorne uma string, com todas as vogais maiúsculas e minúsculas eliminadas de uma string passada
 --    por parâmetro usando list compreenshion.
 
---    3.5) Sabe-se que as unidades imperiais de comprimento podem
---    ser Inch , Yard ou Foot (há outras ignoradas aqui). Sabe-se
---    que 1in=0.0254m , 1yd=0.9144m , 1ft=0.3048 . Faça a função
---    converterMetros que recebe a unidade imperial e o valor
---    correspondente nesta unidade. Esta função deve retornar o valor
---    em metros.
---    Implemente também a função converterImperial , que
---    recebe um valor em metros e a unidade de conversão. Esta função
+--    3.5) Sabe-se que as unidades imperiais de comprimento podem ser Inch , Yard ou Foot (há outras ignoradas aqui). Sabe-se
+--    que 1in=0.0254m , 1yd=0.9144m , 1ft=0.3048 . Faça a função converterMetros que recebe a unidade imperial e o valor
+--    correspondente nesta unidade. Esta função deve retornar o valor em metros.
+--    Implemente também a função converterImperial , que recebe um valor em metros e a unidade de conversão. Esta função
 --    deve retornar o valor convertido para a unidade desejada.
   
---    3.6) Faça um novo tipo chamado Mes , que possui como
---    valores todos os meses do ano. Implemente:
---    A função checaFim , que retorna o número de dias
---    que cada mês possui (considere fevereiro tendo 28 dias).
---    A função prox , que recebe um mês atual e retorna o
---    próximo mês.
---    A função estacao , que retorna a estação do ano de
---    acordo com o mês e com o hemisfério.
---    Use apenas tipos criados pela palavra data aqui.
+--    3.6) Faça um novo tipo chamado Mes , que possui como valores todos os meses do ano. Implemente: A função checaFim , que retorna o número de dias
+--    que cada mês possui (considere fevereiro tendo 28 dias). A função prox , que recebe um mês atual e retorna o próximo mês.
+--    A função estacao, que retorna a estação do ano de acordo com o mês e com o hemisfério. Use apenas tipos criados pela palavra data aqui.
   
---    3.7) Faça uma função que receba uma String e retorne
---    True se esta for um palíndromo; caso contrário, False .
+--    3.7) Faça uma função que receba uma String e retorne True se esta for um palíndromo; caso contrário, False.
 
---    3.8) Faça uma função que elimine todos os números pares,
---    todos os ímpares múltiplos de 7 e negativos de uma lista de inteiros
---    passada via parâmetro. Você deve retornar esta lista em ordem
---    reversa em comparação a do parâmetro.
+--    3.8) Faça uma função que elimine todos os números pares, todos os ímpares múltiplos de 7 e negativos de uma lista de inteiros
+--    passada via parâmetro. Você deve retornar esta lista em ordem reversa em comparação a do parâmetro.
 
 --    3.9) Faça uma função que recebe três Strings x , y e z como
 --    parâmetro. A função retorna uma tupla com três coordenadas

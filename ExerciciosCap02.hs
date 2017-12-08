@@ -49,6 +49,7 @@ reverteOrdem [xs] = reverse [xs]
 -- 2.4) Escreva uma função que receba um vetor de Strings e retorne uma lista com o tamanho de cada String. 
 -- As palavras de tamanho par devem ser excluídas da resposta.
 tamanhoElementos :: [Strings] -> [Int]
+tamanhoElementos xs = [ length x | x <- xs ]
 
 -- 2.5) Escreva a função head como composição de duas outras.
 

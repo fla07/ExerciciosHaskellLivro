@@ -1,27 +1,25 @@
 --    3.1) Crie o tipo Pergunta com os values constructors Sim
 --    ou Nao . Faça as funções seguintes, determinando seus tipos
 --    explicitamente.
---    pergNum : recebe via parâmetro uma Pergunta .
---    Retorna 0 para Nao e 1 para Sim .
---    listPergs : recebe via parâmetro uma lista de
---    Perguntas , e retorna 0 s e 1 s correspondentes aos
---    constructores contidos na lista.
---    and' : recebe duas Perguntas como parâmetro e
---    retorna a tabela verdade do and lógico, usando
---    Sim como verdadeiro e Nao como falso.
---    or' : idem ao anterior, porém deve ser usado o ou
---    lógico.
---    not' : idem aos anteriores, porém usando o not
---    lógico.
+    --    pergNum : recebe via parâmetro uma Pergunta .
+    --    Retorna 0 para Nao e 1 para Sim .
+    --    listPergs : recebe via parâmetro uma lista de
+    --    Perguntas , e retorna 0 s e 1 s correspondentes aos
+    --    constructores contidos na lista.
+    --    and' : recebe duas Perguntas como parâmetro e
+    --    retorna a tabela verdade do and lógico, usando
+    --    Sim como verdadeiro e Nao como falso.
+    --    or' : idem ao anterior, porém deve ser usado o ou lógico.
+    --    not' : idem aos anteriores, porém usando o not lógico.
 
 --    3.2) Faça o tipo Temperatura que pode ter valores Celsius ,
 --    Farenheit ou Kelvin . Implemente as funções:
---    converterCelsius : recebe um valor double e uma
---    temperatura, e faz a conversão para Celsius.
---    converterKelvin : recebe um valor double e uma
---    temperatura, e faz a conversão para Kelvin.
---    converterFarenheit : recebe um valor double e
---    uma temperatura, e faz a conversão para Farenheit.
+    --    converterCelsius : recebe um valor double e uma
+    --    temperatura, e faz a conversão para Celsius.
+    --    converterKelvin : recebe um valor double e uma
+    --    temperatura, e faz a conversão para Kelvin.
+    --    converterFarenheit : recebe um valor double e
+    --    uma temperatura, e faz a conversão para Farenheit.
 
 --    3.3) Implemente uma função que simule o vencedor de uma
 --    partida de pedra, papel e tesoura usando tipos criados. Casos de
@@ -91,13 +89,11 @@
 --    área de um quadrado.
 --    areaRet :: Metros -> Metros -> Metros :
 --    calcula a área de um retângulo.
---    areaCubo :: Metros -> Metros : calcula a área de um cubo.
---    Exemplo:
---    Prelude> areaQuadrado (Metros 1 2.0)
---    Metros 2 4.0
---    Use o pattern matching para ignorar as metragens erradas
---    (calcular a área de um quadrado com um lado de dimensão 4 não é
---    válido).
+    --    areaCubo :: Metros -> Metros : calcula a área de um cubo. Exemplo:
+    --    Prelude> areaQuadrado (Metros 1 2.0)
+    --    Metros 2 4.0
+    --    Use o pattern matching para ignorar as metragens erradas
+--    (calcular a área de um quadrado com um lado de dimensão 4 não é  válido).
 
 --    3.14) Faça o novo tipo Valido que possui dois value
 --    constructors Sim e Nao . O value constructor Sim possui um

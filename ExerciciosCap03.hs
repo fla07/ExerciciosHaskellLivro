@@ -1,3 +1,6 @@
+module ExerciciosCap03 where
+
+
 --    3.1) Crie o tipo Pergunta com os values constructors Sim ou Nao . Faça as funções seguintes, determinando seus tipos explicitamente.
     --    pergNum : recebe via parâmetro uma Pergunta. Retorna 0 para Nao e 1 para Sim .
     --    listPergs : recebe via parâmetro uma lista de Perguntas , e retorna 0 s e 1 s correspondentes aos constructores contidos na lista.
@@ -7,10 +10,13 @@
     
 data Pergunta = Sim | Nao
         deriving Show
+pergNum :: Pergunta -> Int
+pergNum Sim = 1
+pergNum Nao = 0
 
 listPergs :: [Pergunta] -> [Int]
-listPergs Sim = 1
-listPergs _= 0
+listPergs [] = []
+listPergs xs = map pergNum xs
 
 and' :: Pergunta -> Pergunta -> Bool
 and' Sim Sim = True
@@ -33,50 +39,89 @@ not' _ _ = True
 data Temperatura = Celsius | Farenheit | Kelvin
                 deriving Show
 
-converterCelsius :: Temperatura -> temperatura
-converterCelsius Kelvin = x - 273
-converterCelsius Farenheit = (x - 32)/1.8
+converterCelsius :: (Double,Temperatura) -> Double
+converterCelsius  (x, Kelvin)  = x - 273
+converterCelsius (x, Farenheit) = (x - 32)/1.8
 
-converterFarenheit :: Temperatura -> temperatura
-converterFarenheit Kelvin = (x - 273)* 1.8 + 32
-converterFarenheit Celsius = 1.8 * x + 32
+converterFarenheit :: (Double,Temperatura) -> Double
+converterFarenheit (x, Kelvin) = (x - 273)* 1.8 + 32
+converterFarenheit (x, Celsius) = 1.8 * x + 32
 
-converterKelvin :: Temperatura -> temperatura
-converterKelvin Celsius = x + 273
-converterKelvin Farenheit = (x - 32)/1.8 + 273
+converterKelvin :: (Double,Temperatura) -> Double
+converterKelvin (x, Celsius) = x + 273
+converterKelvin (x, Farenheit) = (x - 32)/1.8 + 273
 
 
 --    3.3) Implemente uma função que simule o vencedor de uma partida de pedra, papel e tesoura usando tipos criados. Casos de
 --    empate devem ser considerados em seu tipo.
+data Jokenpo = Pedra | Papel | Tesoura
+            deriving Show
 
+partidaJokenpo :: Jokenpo -> Jokenpo -> Jokenpo
+partidaJokenpo Pedra Papel = Papel
+partidaJokenpo Papel Pedra = Papel
+partidaJokenpo Pedra Tesoura = Pedra
+partidaJokenpo Tesoura Pedra = Pedra
+partidaJokenpo _ _ = Tesoura
 
 --    3.4) Faça uma função que retorne uma string, com todas as vogais maiúsculas e minúsculas eliminadas de uma string passada
 --    por parâmetro usando list compreenshion.
+ehVogal :: Char -> Bool
+ehVogal x = x `elem` "aeiouAEIOU"
+
+retornaVogal :: String -> String
+retornaVogal xs = filter ehVogal xs
+
+-- Abaixo um exemplo de como seria para mostrar apenas as consoantes, eliminando as vogais
+eliminarVogal :: String -> String
+eliminarVogal "" = ""
+eliminarVogal (x:xs)
+        | elem x "AEIOUaeiou" = eliminarVogal xs
+        | otherwise = x : eliminarVogal xs
+
 
 --    3.5) Sabe-se que as unidades imperiais de comprimento podem ser Inch , Yard ou Foot (há outras ignoradas aqui). Sabe-se
 --    que 1in=0.0254m , 1yd=0.9144m , 1ft=0.3048 . Faça a função converterMetros que recebe a unidade imperial e o valor
 --    correspondente nesta unidade. Esta função deve retornar o valor em metros.
 --    Implemente também a função converterImperial , que recebe um valor em metros e a unidade de conversão. Esta função
 --    deve retornar o valor convertido para a unidade desejada.
-  
+
+data Imperial = Inch | Yard | Foot
+            deriving Show
+
+converterMetros :: (Double,Imperial) -> Double
+converterMetros (x,Inch) = x*0.0254
+converterMetros (x,Yard) = x*0.9144
+converterMetros (x,Foot) = x*0.3048
+
 --    3.6) Faça um novo tipo chamado Mes , que possui como valores todos os meses do ano. Implemente: A função checaFim , que retorna o número de dias
 --    que cada mês possui (considere fevereiro tendo 28 dias). A função prox , que recebe um mês atual e retorna o próximo mês.
 --    A função estacao, que retorna a estação do ano de acordo com o mês e com o hemisfério. Use apenas tipos criados pela palavra data aqui.
+data Mes = Janeiro | Fevereiro | Marco | Abril | Maio | Junho 
+            | Julho | Agosto | Setembro | Outubro | Novembro | Dezembro
+            deriving Show
+
+checaFim :: Mes -> Int
+checaFim Fevereiro = 28
+checaFim Abril = 30
+checaFim Junho = 30
+checaFim Setembro = 30
+checaFim Novembro = 30
+checaFim _ = 31
   
 --    3.7) Faça uma função que receba uma String e retorne True se esta for um palíndromo; caso contrário, False.
+ehPalindromo :: String -> Bool
+ehPalindromo = x == reverse x
 
 --    3.8) Faça uma função que elimine todos os números pares, todos os ímpares múltiplos de 7 e negativos de uma lista de inteiros
 --    passada via parâmetro. Você deve retornar esta lista em ordem reversa em comparação a do parâmetro.
 
---    3.9) Faça uma função que recebe três Strings x , y e z como
---    parâmetro. A função retorna uma tupla com três coordenadas
---    contendo a ordem reversa em cada. A primeira coordenada deve
---    conter string reversa do primeiro parâmetro, e assim por diante.
 
---    3.10) Faça uma função chamada revNum , que receba uma
---    String s e um Int n . Esta deverá retornar as n primeiras letras
---    em ordem reversa e o restante em sua ordem normal. Exemplo:
---    revNum 4 "FATEC" = "ETAFC"
+--    3.9) Faça uma função que recebe três Strings x , y e z como parâmetro. A função retorna uma tupla com três coordenadas
+--    contendo a ordem reversa em cada. A primeira coordenada deve conter string reversa do primeiro parâmetro, e assim por diante.
+
+--    3.10) Faça uma função chamada revNum , que receba uma String s e um Int n . Esta deverá retornar as n primeiras letras
+--    em ordem reversa e o restante em sua ordem normal. Exemplo: revNum 4 "FATEC" = "ETAFC"
 
 --    3.11) Crie o tipo de dado Binario que pode ser Zero ou
 --    Um . Faça outro tipo de dado chamado Funcao que pode ser
